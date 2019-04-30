@@ -1,4 +1,20 @@
 <?php 
+session_start(); //adicionado
+
+
+function verificaLogin(){
+//session_start();
+if(!$_SESSION['usuario']) {
+	header('Location: index.php');
+	exit();
+
+}
+}
+function logout(){
+session_destroy();
+header('Location: index.php');
+exit();
+}
 
 spl_autoload_register(function($class_name){
 
@@ -9,5 +25,6 @@ spl_autoload_register(function($class_name){
 	}
 
 });
+ 
 
  ?>

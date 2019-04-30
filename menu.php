@@ -9,6 +9,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+ <?php
+include('config.php');
+verificaLogin();
+?>
 <body>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -31,7 +35,7 @@
         <a class="nav-link" href="#">Frequência</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="#">Sair</a>
+        <a class="nav-link" href="logout.php">Sair</a>
       </li>   
     </ul>
   </div>  

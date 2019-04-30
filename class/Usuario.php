@@ -74,24 +74,38 @@ class Usuario {
 	}
 
 	public function login($login, $password){
+		echo "entrou na funcao";
 
 		$sql = new Sql();
+		//$login = md5($login);
 
-		$results = $sql->select("SELECT * FROM tb_usuarios WHERE deslogin = :LOGIN AND dessenha = :PASSWORD", array(
+		$results = $sql->select("SELECT * FROM administrador WHERE idAdministrador = :LOGIN AND senha = :PASSWORD", array(
 			":LOGIN"=>$login,
 			":PASSWORD"=>$password
 		));
 
 		if (count($results) > 0) {
+			
 
-			$this->setData($results[0]);
+			$_SESSION['usuario'] = $login;
+			header('Location: principal.php');
+			exit();
+			return true;
 
 		} else {
 
-			throw new Exception("Login e/ou senha inválidos.");
+			return false;
+
+         
+			$_SESSION['nao_autenticado'] = true;
+			header('Location: index.php');
+			exit();
+			
+
+
 
 		}
-
+return false;
 	}
 
 	public function setData($data){
